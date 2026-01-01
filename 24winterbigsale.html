@@ -154,63 +154,45 @@
       .snowflake-custom,.animate__animated{animation:none !important;}
     }
 
-/* =========================
-   ✅ 모바일 100% 넘침 방지 패치
-   ========================= */
-@media (max-width:768px){
-  html, body{
-    width:100%;
-    overflow-x:hidden; /* 가로 스크롤 차단 */
-  }
+    /* =========================
+       ✅ 모바일 100% 넘침 방지 패치
+       ========================= */
+    @media (max-width:768px){
+      html, body{width:100%;overflow-x:hidden;}
 
-  /* 모바일에서 컨테이너는 무조건 100% */
-  .mover, .mover .event-container, .mover .tabmenu-wrap{
-    width:100%;
-    max-width:100% !important;
-  }
+      .mover, .mover .event-container, .mover .tabmenu-wrap{
+        width:100%;
+        max-width:100% !important;
+      }
 
-  /* 이미지가 컨테이너 밖으로 못 나가게 */
-  .mover img, .mover video, .mover svg{
-    max-width:100%;
-    height:auto;
-  }
+      .mover img, .mover video, .mover svg{
+        max-width:100%;
+        height:auto;
+      }
 
-  /* ✅ Swiper가 ul을 wrapper로 쓰는 경우 기본 padding 때문에 넘침 발생 가능 */
-  .mover ul{
-    padding-left:0 !important;
-    padding-right:0 !important;
-    margin-left:0 !important;
-    margin-right:0 !important;
-  }
+      .mover ul{
+        padding-left:0 !important;
+        padding-right:0 !important;
+        margin-left:0 !important;
+        margin-right:0 !important;
+      }
 
-  /* 혹시 남는 경우 대비: 모든 요소의 최대 폭 제한 */
-  .mover *{
-    max-width:100%;
-  }
+      .mover *{max-width:100%;}
 
-/* =========================
-   ✅ 모바일 이미지 1px 여백 완전 제거
-   ========================= */
-@media (max-width:768px){
+      /* ✅ 모바일 이미지 1px 여백 완전 제거 */
+      .mover div,
+      .mover li,
+      .mover a,
+      .mover .swiper-slide{
+        line-height:0 !important;
+        font-size:0 !important;
+      }
 
-  /* 이미지가 들어있는 모든 래퍼 line-height 제거 */
-  .mover div,
-  .mover li,
-  .mover a,
-  .mover .swiper-slide{
-    line-height: 0 !important;
-    font-size: 0 !important;
-  }
-
-  /* 이미지 확실히 block 처리 */
-  .mover img{
-    display: block;
-    vertical-align: top;
-  }
-}
-
-}
-
+      .mover img{
+        display:block;
+        vertical-align:top;
+      }
+    }
   </style>
 </head>
 
@@ -248,7 +230,7 @@
     </div>
   </div>
 
-  <!-- 탭 메뉴 (모바일) -->
+  <!-- 탭 메뉴 (모바일) : 해시 앵커는 유지 -->
   <div class="tabmenu-wrap">
     <div id="m-tab-nav1" class="anchor"></div>
     <ul>
@@ -288,14 +270,10 @@
     <div><img src="http://img.bstyle.kr/event/241219_winterbigsale_m_09.jpg" alt=""></div>
   </div>
 
-  <!-- ✅ 모바일 couponDiv: id 충돌 방지 -->
+  <!-- ✅ 모바일 couponDiv: 링크 삭제(이미지만 유지) -->
   <div id="couponDiv-mo">
-    <a href="//lounge-b.com/exec/front/newcoupon/IssueDownload?coupon_no=6080768924500002114">
-      <img src="http://img.bstyle.kr/event/241219_winterbigsale_m_10.jpg" alt="">
-    </a>
-    <a href="//lounge-b.com/exec/front/newcoupon/IssueDownload?coupon_no=6080768934200002115">
-      <img src="http://img.bstyle.kr/event/241219_winterbigsale_m_11.jpg" alt="">
-    </a>
+    <img src="http://img.bstyle.kr/event/241219_winterbigsale_m_10.jpg" alt="">
+    <img src="http://img.bstyle.kr/event/241219_winterbigsale_m_11.jpg" alt="">
   </div>
 
   <div><img src="http://img.bstyle.kr/event/241219_winterbigsale_m_12.jpg" alt=""></div>
@@ -320,14 +298,14 @@
     <div><img src="http://img.bstyle.kr/event/241219_winterbigsale_m_13.jpg" alt=""></div>
   </div>
 
-  <!-- ✅ 모바일 상품 Swiper (Swiper 11 호환: wrapper/slide 클래스 유지) -->
+  <!-- ✅ 모바일 상품 Swiper: 상품 상세 링크 삭제(이미지만) -->
   <div class="swiper product mo-product">
     <ul class="swiper-wrapper">
-      <li class="swiper-slide"><a href="/product/detail.html?product_no=19706"><img src="http://img.bstyle.kr/event/241219_winterbigsale_m_14_01.jpg" alt=""></a></li>
-      <li class="swiper-slide"><a href="/product/detail.html?product_no=19718"><img src="http://img.bstyle.kr/event/241219_winterbigsale_m_14_02.jpg" alt=""></a></li>
-      <li class="swiper-slide"><a href="/product/detail.html?product_no=16731"><img src="http://img.bstyle.kr/event/241219_winterbigsale_m_14_03.jpg" alt=""></a></li>
-      <li class="swiper-slide"><a href="/product/detail.html?product_no=17981"><img src="http://img.bstyle.kr/event/241219_winterbigsale_m_14_04.jpg" alt=""></a></li>
-      <li class="swiper-slide"><a href="/product/detail.html?product_no=19693"><img src="http://img.bstyle.kr/event/241219_winterbigsale_m_14_05.jpg" alt=""></a></li>
+      <li class="swiper-slide"><img src="http://img.bstyle.kr/event/241219_winterbigsale_m_14_01.jpg" alt=""></li>
+      <li class="swiper-slide"><img src="http://img.bstyle.kr/event/241219_winterbigsale_m_14_02.jpg" alt=""></li>
+      <li class="swiper-slide"><img src="http://img.bstyle.kr/event/241219_winterbigsale_m_14_03.jpg" alt=""></li>
+      <li class="swiper-slide"><img src="http://img.bstyle.kr/event/241219_winterbigsale_m_14_04.jpg" alt=""></li>
+      <li class="swiper-slide"><img src="http://img.bstyle.kr/event/241219_winterbigsale_m_14_05.jpg" alt=""></li>
     </ul>
   </div>
 
@@ -346,9 +324,9 @@
     </ul>
   </div>
 
-  <!-- 카카오 -->
+  <!-- 카카오: 외부 링크 삭제(이미지만) -->
   <div id="m-kakao">
-    <a href="https://pf.kakao.com/_xkxlxndxl"><img src="http://img.bstyle.kr/event/241219_winterbigsale_m_15.jpg" alt=""></a>
+    <img src="http://img.bstyle.kr/event/241219_winterbigsale_m_15.jpg" alt="">
   </div>
 
   <!-- 탭 5 -->
@@ -433,7 +411,7 @@
     </div>
   </div>
 
-  <!-- 탭 메뉴 -->
+  <!-- 탭 메뉴 : 해시 앵커는 유지 -->
   <div class="tabmenu-wrap">
     <div id="tab-nav1" class="anchor"></div>
     <ul>
@@ -473,14 +451,14 @@
     </div>
   </div>
 
-  <!-- ✅ PC couponDiv: id 충돌 방지 -->
+  <!-- ✅ PC couponDiv: 이미지맵 href 제거 -->
   <div class="event-container" align="center">
     <div id="couponDiv-pc">
       <div>
         <img src="http://img.bstyle.kr/event/241219_winterbigsale_11.jpg" usemap="#Map1" border="0" alt="" />
         <map name="Map1" id="Map1">
-          <area shape="rect" coords="511,95,934,382" href="//lounge-b.com/exec/front/newcoupon/IssueDownload?coupon_no=6080768924500002114" />
-          <area shape="rect" coords="969,90,1382,386" href="//lounge-b.com/exec/front/newcoupon/IssueDownload?coupon_no=6080768934200002115" />
+          <area shape="rect" coords="511,95,934,382" />
+          <area shape="rect" coords="969,90,1382,386" />
         </map>
       </div>
     </div>
@@ -506,14 +484,15 @@
     </div>
   </div>
 
+  <!-- ✅ PC 상품 Swiper: 상품 상세 링크 삭제(이미지만) -->
   <div class="event-container" align="center">
     <div class="swiper product pc-product">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><a href="/product/detail.html?product_no=19706"><img src="http://img.bstyle.kr/event/241219_winterbigsale_13_01.jpg" alt=""></a></div>
-        <div class="swiper-slide"><a href="/product/detail.html?product_no=19718"><img src="http://img.bstyle.kr/event/241219_winterbigsale_13_02.jpg" alt=""></a></div>
-        <div class="swiper-slide"><a href="/product/detail.html?product_no=16731"><img src="http://img.bstyle.kr/event/241219_winterbigsale_13_03.jpg" alt=""></a></div>
-        <div class="swiper-slide"><a href="/product/detail.html?product_no=17981"><img src="http://img.bstyle.kr/event/241219_winterbigsale_13_04.jpg" alt=""></a></div>
-        <div class="swiper-slide"><a href="/product/detail.html?product_no=19693"><img src="http://img.bstyle.kr/event/241219_winterbigsale_13_05.jpg" alt=""></a></div>
+        <div class="swiper-slide"><img src="http://img.bstyle.kr/event/241219_winterbigsale_13_01.jpg" alt=""></div>
+        <div class="swiper-slide"><img src="http://img.bstyle.kr/event/241219_winterbigsale_13_02.jpg" alt=""></div>
+        <div class="swiper-slide"><img src="http://img.bstyle.kr/event/241219_winterbigsale_13_03.jpg" alt=""></div>
+        <div class="swiper-slide"><img src="http://img.bstyle.kr/event/241219_winterbigsale_13_04.jpg" alt=""></div>
+        <div class="swiper-slide"><img src="http://img.bstyle.kr/event/241219_winterbigsale_13_05.jpg" alt=""></div>
       </div>
     </div>
   </div>
@@ -531,10 +510,10 @@
     </ul>
   </div>
 
-  <!-- 카카오 -->
+  <!-- 카카오: 외부 링크 삭제(이미지만) -->
   <div class="event-container" align="center">
     <div id="tabcon-04">
-      <div><a href="https://pf.kakao.com/_xkxlxndxl"><img src="http://img.bstyle.kr/event/241219_winterbigsale_14.jpg" alt=""></a></div>
+      <div><img src="http://img.bstyle.kr/event/241219_winterbigsale_14.jpg" alt=""></div>
     </div>
   </div>
 
@@ -689,28 +668,6 @@
         autoplay: { delay: 1500, disableOnInteraction: false },
       });
     }
-
-    // ==========================
-    // 쿠폰 opener_url 처리 (PC/MO 각각)
-    // ==========================
-    const oriUrl = location.href;
-
-    function appendOpenerUrl(containerId){
-      const couponDiv = document.getElementById(containerId);
-      if (!couponDiv) return;
-
-      const aTags = couponDiv.getElementsByTagName("a");
-      for (let i=0;i<aTags.length;i++){
-        aTags[i].setAttribute("href", aTags[i].href + "&opener_url=" + encodeURIComponent(oriUrl));
-      }
-      const areaTags = couponDiv.getElementsByTagName("area");
-      for (let i=0;i<areaTags.length;i++){
-        areaTags[i].setAttribute("href", areaTags[i].href + "&opener_url=" + encodeURIComponent(oriUrl));
-      }
-    }
-
-    appendOpenerUrl('couponDiv-pc');
-    appendOpenerUrl('couponDiv-mo');
   });
 </script>
 
