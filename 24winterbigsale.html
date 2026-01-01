@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winter Big Sale Event</title>
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html { 
+            scroll-behavior: smooth; 
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 눈송이 효과 */
+        .snowflake-custom {
+            position: fixed;
+            top: -50px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 30%, rgba(255, 255, 255, 0) 70%);
+            filter: blur(2px);
+            width: 10px;
+            z-index: 9999;
+            height: 10px;
+            border-radius: 50%;
+            animation: fall-custom linear infinite;
+            opacity: 0.9;
+            pointer-events: none;
+        }
+
+        @keyframes fall-custom {
+            0% {
+                transform: translateY(0) translateX(0) scale(1);
+                opacity: 1;
+            }
+            30% {
+                transform: translateY(30vh) translateX(-10px) scale(1.2);
+                opacity: 0.8;
+            }
+            70% {
+                transform: translateY(60vh) translateX(5px) scale(0.9);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(120vh) translateX(15px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* 이벤트 컨테이너 */
+        .event-container { 
+            position: relative;
+            width: 100%;
+            max-width: 1920px;
+            margin: 0 auto;
+            padding: 0;
+            line-height: 0;
+            overflow: hidden;
+        }
+        .event-container img { 
+            width: 100%; 
+            display: block; 
+        }
+
+        /* 애니메이션 */
+        :root {
+            --animate-duration: 1.3s;
+            --animate-delay: 0.5s;
+        }
+        .animate__animated {
+            animation-duration: var(--animate-duration);
+            animation-fill-mode: both;
+        }
+
+        @keyframes fadeSlideIn {
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .animate__fadeSlideIn {
+            animation-name: fadeSlideIn;
+        }
+
+        @keyframes verticalRotateMove {
+            0% {
+                transform: translateY(100px) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                transform: translateY(-40px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+        }
+        .animate__verticalRotateMove {
+            animation-name: verticalRotateMove;
+        }
+
+        /* Swiper */
+        .swiper {
+            width: 100%;
+            height: auto;
+        }
+        
+        .swiper-wrapper {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .swiper-slide {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        .swiper-slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* 탭 메뉴 */
+        .tabmenu-wrap { 
+            width: 100%;  
+            max-width: 1902px; 
+            padding: 0px; 
+            font-size: 0px; 
+            margin: 0 auto;
+        }
+        .tabmenu-wrap ul { 
+            padding: 0px; 
+            font-size: 0px; 
+            list-style: none;
+            margin: 0;
+        }
+        .tabmenu-wrap li { 
+            display: inline-block; 
+            width: 16.666%; 
+            padding: 0px; 
+            margin: 0px; 
+        }
+        .tabmenu-wrap li img { 
+            width: 100%; 
+            display: block;
+        }
+        .anchor { 
+            display: inline-block; 
+            position: relative; 
+            top: 0;
+        }
+
+        /* 팝업 */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10000;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 20px;
+            z-index: 10001;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 1000px;
+            width: 70%;
+        }
+
+        .popup-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .close-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 인트로 -->
+<div class="event-container" align="center">
+    <div style="text-align: center;">
+        <img src="http://img.bstyle.kr/event/241219_winterbigsale_01_3.jpg">
+    </div>
+
+    <div class="animate__animated animate__verticalRotateMove" style="animation-delay: 0.4s; position: absolute; right: 0; left: 0; top: 0; z-index: 4; text-align: center;">
+        <img src="http://img.bstyle.kr/event/241219_winterbigsale_T1.png">
+    </div>
+
+    <div class="animate__animated animate__verticalRotateMove" style="animation-delay: 0.5s; position: absolute; right: 0; left: 0; top: 0; z-index: 4; text-align: center;">
+        <img src="http://img.bstyle.kr/event/241219_winterbigsale_T2.png">
+    </div>
+
+    <div class="animate__animated animate__verticalRotateMove" style="animation-delay: 0.6s; position: absolute; right: 0; left: 0; top: 0; z-index: 4; text-align: center;">
+        <img src="http://img.bstyle.kr/event/241219_winterbigsale_T3.png">
+    </div>
+
+    <div class="animate__animated animate__verticalRotateMove" style="animation-delay: 0.7s; position: absolute; right: 0; left: 0; top: 0; z-index: 4; text-align: center;">
+        <img src="http://img.bstyle.kr/event/241219_winterbigsale_T4.png">
+    </div>
+
+    <div class="animate__animated animate__verticalRotateMove" style="animation-delay: 0.8s; position: absolute; right: 0; left: 0; top: 0; z-index: 4; text-align: center;">
+        <img src="http://img.bstyle.kr/event/241219_winterbigsale_T5.png">
+    </div>
+
+    <div class="animate__animated animate__fadeSlideIn" style="animation-delay: 1.2s; position: absolute; right: 0; left: 0; top: 0; z-index: 4; text-align: center;">
+        <img src="http://img.bstyle.kr/event/241219_winterbigsale_tt.png">
+    </div>
+</div>
+
+<!-- 메인 슬라이더 -->
+<div class="event-container" align="center">
+    <div class="swiper intro">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="http://img.bstyle.kr/event/241219_winterbigsale_03_01.gif"/>
+            </div>
+            <div class="swiper-slide">
+                <img src="http://img.bstyle.kr/event/241219_winterbigsale_03_0333.gif"/>
+            </div>
+            <div class="swiper-slide">
+                <img src="http://img.bstyle.kr/event/241219_winterbigsale_03_01.gif"/>
+            </div>
+            <div class="swiper-slide">
+                <img src="http://img.bstyle.kr/event/241219_winterbigsale_03_0333.gif"/>
+            </div>
+            <div class="swiper-slide">
+                <img src="http://img.bstyle.kr/event/241219_winterbigsale_03_01.gif"/>
+            </div>
+            <div class="swiper-slide">
+                <img src="http://img.bstyle.kr/event/241219_winterbigsale_03_0333.gif"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 탭 메뉴 -->
+<div class="tabmenu-wrap">
+    <div id="tab-nav1" class="anchor"></div>
+    <ul>
+        <li><a href="#tab-nav1"><img src="http://img.bstyle.kr/event/241219_winterbigsale_03_01.jpg"></a></li>
+        <li><a href="#tab-nav2"><img src="http://img.bstyle.kr/event/241219_winterbigsale_04.jpg"></a></li>
+        <li><a href="#tab-nav3"><img src="http://img.bstyle.kr/event/241219_winterbigsale_05.jpg"></a></li>
+        <li><a href="#tab-nav4"><img src="http://img.bstyle.kr/event/241219_winterbigsale_06.jpg"></a></li>
+        <li><a href="#tab-nav5"><img src="http://img.bstyle.kr/event/241219_winterbigsale_07.jpg"></a></li>
+        <li><a href="#tab-nav6"><img src="http://img.bstyle.kr/event/241219_winterbigsale_08.jpg"></a></li>
+    </ul>
+</div>
+
+<!-- 브랜드 쿠폰 -->
+<div class="event-container" align="center">
+    <div id="tabcon-01">
+        <div><img src="http://img.bstyle.kr/event/241219_winterbigsale_09.jpg"></div>
+    </div>   
+</div>
+
+<!-- 탭 메뉴 2 -->
+<div class="tabmenu-wrap">
+    <div id="tab-nav2" class="anchor"></div>
+    <ul>
+        <li><a href="#tab-nav1"><img src="http://img.bstyle.kr/event/241219_winterbigsale_03.jpg"></a></li>
+        <li><a href="#tab-nav2"><img src="http://img.bstyle.kr/event/241219_winterbigsale_04_01.jpg"></a></li>
+        <li><a href="#tab-nav3"><img src="http://img.bstyle.kr/event/241219_winterbigsale_05.jpg"></a></li>
+        <li><a href="#tab-nav4"><img src="http://img.bstyle.kr/event/241219_winterbigsale_06.jpg"></a></li>
+        <li><a href="#tab-nav5"><img src="http://img.bstyle.kr/event/241219_winterbigsale_07.jpg"></a></li>
+        <li><a href="#tab-nav6"><img src="http://img.bstyle.kr/event/241219_winterbigsale_08.jpg"></a></li>
+    </ul>
+</div>
+
+<!-- 스페셜 쿠폰 -->
+<div class="event-container" align="center">
+    <div id="tabcon-02">
+        <div><img src="http://img.bstyle.kr/event/241219_winterbigsale_10.jpg"></div>
+    </div>   
+</div>
+
+<div class="event-container" align="center">
+    <div id="couponDiv">
+        <div>
+            <img src="http://img.bstyle.kr/event/241219_winterbigsale_11.jpg" usemap="#Map1" border="0" />
+            <map name="Map1" id="Map1">
+                <area shape="rect" coords="511,95,934,382" href="//lounge-b.com/exec/front/newcoupon/IssueDownload?coupon_no=6080768924500002114" />
+                <area shape="rect" coords="969,90,1382,386" href="//lounge-b.com/exec/front/newcoupon/IssueDownload?coupon_no=6080768934200002115" />
+            </map>
+        </div>
+    </div>
+</div>
+
+<!-- 탭 메뉴 3 -->
+<div class="tabmenu-wrap">
+    <div id="tab-nav3" class="anchor"></div>
+    <ul>
+        <li><a href="#tab-nav1"><img src="http://img.bstyle.kr/event/241219_winterbigsale_03.jpg"></a></li>
+        <li><a href="#tab-nav2"><img src="http://img.bstyle.kr/event/241219_winterbigsale_04.jpg"></a></li>
+        <li><a href="#tab-nav3"><img src="http://img.bstyle.kr/event/241219_winterbigsale_05_01.jpg"></a></li>
+        <li><a href="#tab-nav4"><img src="http://img.bstyle.kr/event/241219_winterbigsale_06.jpg"></a></li>
+        <li><a href="#tab-nav5"><img src="http://img.bstyle.kr/event/241219_winterbigsale_07.jpg"></a></li>
+        <li><a href="#tab-nav6"><img src="http://img.bstyle.kr/event/241219_winterbigsale_08.jpg"></a></li>
+    </ul>
+</div>
+
+<!-- 상품 할인가 안내 -->
+<div class="event-container" align="center">
+    <div id="tabcon-03">
+        <div><img src="http://img.bstyle.kr/event/241219_winterbigsale_12.jpg"></div>
+    </div>   
+</div>
+
+<div class="event-container" align="center">
+    <div class="swiper product">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><a href="/product/detail.html?product_no=19706"><img src="http://img.bstyle.kr/event/241219_winterbigsale_13_01.jpg"></a></div>
+            <div class="swiper-slide"><a href="/product/detail.html?product_no=19718"><img src="http://img.bstyle.kr/event/241219_winterbigsale_13_02.jpg"></a></div>
+            <div class="swiper-slide"><a href="/product/detail.html?product_no=16731"><img src="http://img.bstyle.kr/event/241219_winterbigsale_13_03.jpg"></a></div>
+            <div class="swiper-slide"><a href="/product/detail.html?product_no=17981"><img src="http://img.bstyle.kr/event/241219_winterbigsale_13_04.jpg"></a></div>
+            <div class="swiper-slide"><a href="/product/detail.html?product_no=19693"><img src="http://img.bstyle.kr/event/241219_winterbigsale_13_05.jpg"></a></div>
+        </div>
+    </div>
+</div>
+
+<!-- 탭 메뉴 4 -->
+<div class="tabmenu-wrap">
+    <div id="tab-nav4" class="anchor"></div>
+    <ul>
+        <li><a href="#tab-nav1"><img src="http://img.bstyle.kr/event/241219_winterbigsale_03.jpg"></a></li>
+        <li><a href="#tab-nav2"><img src="http://img.bstyle.kr/event/241219_winterbigsale_04.jpg"></a></li>
+        <li><a href="#tab-nav3"><img src="http://img.bstyle.kr/event/241219_winterbigsale_05.jpg"></a></li>
+        <li><a href="#tab-nav4"><img src="http://img.bstyle.kr/event/241219_winterbigsale_06_01.jpg"></a></li>
+        <li><a href="#tab-nav5"><img src="http://img.bstyle.kr/event/241219_winterbigsale_07.jpg"></a></li>
+        <li><a href="#tab-nav6"><img src="http://img.bstyle.kr/event/241219_winterbigsale_08.jpg"></a></li>
+    </ul>
+</div>
+
+<!-- 카카오 -->
+<div class="event-container" align="center">
+    <div id="tabcon-04">
+        <div><a href="https://pf.kakao.com/_xkxlxndxl"><img src="http://img.bstyle.kr/event/241219_winterbigsale_14.jpg"></a></div>
+    </div>
+</div>
+
+<!-- 탭 메뉴 5 -->
+<div class="tabmenu-wrap">
+    <div id="tab-nav5" class="anchor"></div>
+    <ul>
+        <li><a href="#tab-nav1"><img src="http://img.bstyle.kr/event/241219_winterbigsale_03.jpg"></a></li>
+        <li><a href="#tab-nav2"><img src="http://img.bstyle.kr/event/241219_winterbigsale_04.jpg"></a></li>
+        <li><a href="#tab-nav3"><img src="http://img.bstyle.kr/event/241219_winterbigsale_05.jpg"></a></li>
+        <li><a href="#tab-nav4"><img src="http://img.bstyle.kr/event/241219_winterbigsale_06.jpg"></a></li>
+        <li><a href="#tab-nav5"><img src="http://img.bstyle.kr/event/241219_winterbigsale_07_01.jpg"></a></li>
+        <li><a href="#tab-nav6"><img src="http://img.bstyle.kr/event/241219_winterbigsale_08.jpg"></a></li>
+    </ul>
+</div>
+
+<!-- 카드할인 -->
+<div class="event-container" align="center">
+    <div id="tabcon-05">
+        <div><img src="http://img.bstyle.kr/event/241219_winterbigsale_15.jpg"></div>
+    </div>   
+</div>
+
+<!-- 유의사항 -->
+<div class="event-container" align="center">
+    <div><img src="http://img.bstyle.kr/event/241219_winterbigsale_16.jpg" alt="Clickable Image" onclick="openPopup()" style="cursor: pointer;"></div>
+
+    <!-- 팝업 오버레이 -->
+    <div id="popupOverlay" class="popup-overlay">
+        <div class="popup-content">
+            <img src="http://img.bstyle.kr/event/241219_winterbigsale_18.jpg" alt="Popup Image">
+            <button class="close-button" onclick="closePopup()">닫기</button>
+        </div>
+    </div>
+</div>
+
+<div class="event-container" align="center">
+    <div><img src="http://img.bstyle.kr/event/241219_winterbigsale_17.jpg"></div>
+</div>
+
+<!-- 탭 메뉴 6 -->
+<div class="tabmenu-wrap">
+    <div id="tab-nav6" class="anchor"></div>
+    <ul>
+        <li><a href="#tab-nav1"><img src="http://img.bstyle.kr/event/241219_winterbigsale_03.jpg"></a></li>
+        <li><a href="#tab-nav2"><img src="http://img.bstyle.kr/event/241219_winterbigsale_04.jpg"></a></li>
+        <li><a href="#tab-nav3"><img src="http://img.bstyle.kr/event/241219_winterbigsale_05.jpg"></a></li>
+        <li><a href="#tab-nav4"><img src="http://img.bstyle.kr/event/241219_winterbigsale_06.jpg"></a></li>
+        <li><a href="#tab-nav5"><img src="http://img.bstyle.kr/event/241219_winterbigsale_07.jpg"></a></li>
+        <li><a href="#tab-nav6"><img src="http://img.bstyle.kr/event/241219_winterbigsale_08_01.jpg"></a></li>
+    </ul>
+</div>
+
+<!-- 상품 모아보기 - 온앤온 -->
+<div class="event-container" align="center">
+    <div id="tabcon-06">
+        <div><a href="/product/list.html?cate_no=804"><img src="http://img.bstyle.kr/event/241219_winterbigsale_on.jpg"></a></div>
+        <div><img src="http://img.bstyle.kr/event/241219_winterbigsale_b.jpg"></div>
+    </div>
+</div>
+
+<div style="height:50px;"></div>
+
+<!-- 올리브 -->
+<div class="event-container" align="center">
+    <div><a href="/product/list.html?cate_no=1983"><img src="http://img.bstyle.kr/event/241219_winterbigsale_olive.jpg"></a></div>
+    <div><img src="http://img.bstyle.kr/event/241219_winterbigsale_b.jpg"></div>
+</div>
+
+<div style="height:50px;"></div>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    // 페이지 로드 후 실행
+    window.addEventListener('load', function() {
+        console.log('Initializing Swipers...');
+        
+        // Intro Swiper (3개 슬라이드 보이기)
+        var swiperIntro = new Swiper('.intro', {
+            slidesPerView: 3,
+            spaceBetween: -1.3,
+            loop: true,
+            speed: 3500,
+            autoplay: {
+                delay: 0,
+                disableOnInteraction: false,
+            },
+            centeredSlides: false,
+        });
+        console.log('Intro Swiper initialized:', swiperIntro);
+
+        // Product Swiper (1개씩 보이기)
+        var swiperProduct = new Swiper('.product', {
+            slidesPerView: 1,
+            spaceBetween: 0,
+            loop: true,
+            speed: 1500,
+            autoplay: {
+                delay: 1800,
+                disableOnInteraction: false,
+            },
+        });
+        console.log('Product Swiper initialized:', swiperProduct);
+
+        // 눈송이 효과
+        const snowflakes = new Set();
+        const maxSnowflakes = 100;
+
+        const createSnowflake = () => {
+            if (snowflakes.size >= maxSnowflakes) return;
+
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake-custom');
+
+            const size = Math.random() * 10 + 5;
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.width = size + 'px';
+            snowflake.style.height = size + 'px';
+            snowflake.style.animationDuration = Math.random() * 5 + 4 + 's';
+            snowflake.style.animationDelay = '0s';
+            snowflake.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+            document.body.appendChild(snowflake);
+            snowflakes.add(snowflake);
+
+            snowflake.addEventListener('animationend', () => {
+                snowflake.remove();
+                snowflakes.delete(snowflake);
+            });
+        };
+
+        setInterval(createSnowflake, 150);
+    });
+
+    // 팝업 기능
+    function openPopup() {
+        document.getElementById('popupOverlay').style.display = 'flex';
+    }
+
+    function closePopup() {
+        document.getElementById('popupOverlay').style.display = 'none';
+    }
+
+    // 쿠폰 발급 영역 URL 처리
+    var oriUrl = location.href;
+    var couponDiv = document.getElementById('couponDiv');
+    
+    if (couponDiv) {
+        var aTags = couponDiv.getElementsByTagName("a");
+        for (var i = 0; i < aTags.length; i++) {
+            aTags[i].setAttribute("href", aTags[i].href + "&opener_url=" + oriUrl);
+        }
+
+        var areaTags = couponDiv.getElementsByTagName("area");
+        for (var i = 0; i < areaTags.length; i++) {
+            areaTags[i].setAttribute("href", areaTags[i].href + "&opener_url=" + oriUrl);
+        }
+    }
+</script>
+
+</body>
+</html>
