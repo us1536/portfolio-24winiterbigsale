@@ -453,14 +453,17 @@
         // Intro Swiper (3개 슬라이드 보이기)
         var swiperIntro = new Swiper('.intro', {
             slidesPerView: 3,
-            spaceBetween: -1.3,
+            spaceBetween: 0,
             loop: true,
-            speed: 3500,
+            speed: 5000,
+            freeMode: true,
+            freeModeMomentum: false,
             autoplay: {
                 delay: 0,
                 disableOnInteraction: false,
+                pauseOnMouseEnter: false,
             },
-            centeredSlides: false,
+            allowTouchMove: false,
         });
         console.log('Intro Swiper initialized:', swiperIntro);
 
